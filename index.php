@@ -6,7 +6,7 @@
     echo"bienvenue";
   }
   else {
-    echo"pas de session active";
+    echo"Pas de sesion connecté ";
     header("Location: ./adminLogin/index.php");
   }
 ?>
