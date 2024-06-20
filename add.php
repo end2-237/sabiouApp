@@ -80,6 +80,10 @@
                         Nouvelle commande 
                     </div>
                     <div class="form">
+                    <div class="input_field code">
+                            <label for="">Code de la commande</label>
+                            <input type="text" class="input" name="code_com" placeholder="E4ADR7">
+                        </div>
                         <div class="input_field">
                             <label for="">Nom du client </label>
                             <input type="text" class="input" name="nom_client" placeholder="Mohamadou sabiou">

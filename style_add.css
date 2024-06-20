@@ -55,6 +55,14 @@
     margin-right: 10px;
     font-size: 14px;
 }
+.wrapper .form .code{
+    background: var(--color-danger);
+    padding:5px 15px;
+    border-radius:15px;
+    display:flex;
+    justify-content:space-between
+}
+
 .wrapper .form .input_field input{
     width: 100%;
     outline: none;
@@ -63,6 +71,9 @@
     padding: 15px 20px;
     border-radius: 15px;
     transition: all 0.3s ease;
+}
+.wrapper .form .code input{
+    width:150px;
 }
 .wrapper .form .input_field .custom_select{
     position: relative;
@@ -95,6 +106,13 @@
 .wrapper .form .input_field p{
     font-size: 14px;
     color: #757575;
+}
+
+.wrapper .form .code label{
+    width:170px;
+    font-weight:700;
+    font-size:16px;
+    color:#fff;
 }
 .wrapper .form .input_field .check{
     width: 15px;

@@ -235,6 +235,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                                 
                                 <th>Premier versement</th>
                                 <th>Reste à payer</th>
+                                <th>Date de commande</th>
                                 <th>Date de livraison</th>
                                 <th>Montant Total</th>
                                 <th>Nombre carton</th>
@@ -269,6 +270,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                                    <td>" . $row["nom_client"] . "</td>
                                    <td>" . $row["PV"] . "</td>
                                    <td>" . $row["RAP"] . "</td>
+                                   <td class='warning'>" . $row["date_de_commande"] . "</td>
                                    <td class='warning'>" . $row["date_de_livraison"] . "</td>
                                    <td class=''>" . $row["montant_total"] . "FCFA</td>
                                    <td class=''>" . $row["quantite"] . "</td>
@@ -276,9 +278,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                                    
                                    
 
-                                   <td><a href='#' onclick='return confirmDelete(\"./index.php?id=" . $row['id'] . "\")' class='btn'>supprimer</a></td>
+                      
+                                   <td><a href=\"#\" onclick=\"return confirmDelete('./index.php?id=" . $row['id'] . "&code_com=" . $row['code_com'] . "', '" . $row['code_com'] . "')\"   class='btn'>supprimer</a></td>
 
-                                   
                                    <dialog data-modal class='modal'>
                                    <div class='title primary'><big>Modifiez les informations de " . $row["nom_client"] . "</big></div>
                                    <div class='input-field'>
@@ -309,10 +311,16 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                                ?>
 
 <script>
-function confirmDelete(url) {
+function confirmDelete(url, code_com) {
     if (confirm("Voulez-vous vraiment supprimer cet élément ?")) {
-        window.location.href = url;
-        return true;
+        var enteredCode = prompt("Entrez le code de la commande ");
+        if (enteredCode == code_com) {
+            window.location.href = url;
+            return true;
+        } else {
+            alert("Le code saisi ne correspond pas. Opération annulée.");
+            return false;
+        }
     } else {
         return false;
     }
