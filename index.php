@@ -75,7 +75,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                         <span class="material-icons-sharp">add</span>
                         <h3>Ajouter commande</h3>
                     </a>
-                    <a href="#">
+                    <a href="deco.php">
                         <span class="material-icons-sharp">logout</span>
                         <h3>Déconnexion</h3>
                     </a>
