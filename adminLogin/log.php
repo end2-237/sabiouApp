@@ -2,32 +2,31 @@
 session_start();
 
 include_once '../conn.php';
- $error = "connexion reussie";
- $user = $_POST['user'];
- $password = $_POST['password'];
 
- $requete = "SELECT * FROM admin";
-        $resultat = $conn->query($requete);
-        if ($resultat->num_rows > 0) {
-            while ($row = $resultat->fetch_assoc()) {
-                if ($row['user_name'] == $user && $row['password'] == $password) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user = mysqli_real_escape_string($conn, $_POST['user']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-                    $_SESSION['user_id'] = $row['id'];
-                    $_SESSION['name'] = $row['user_name'];
+    $sql = "SELECT * FROM admin WHERE user_name = ? AND password = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $user, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-                    header("Location: ../index.php");
-                    exit;
-                }
-            }
-            echo "échec de connexion!!!!!";
-        }
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['user_name'] = $row['user_name'];
+        header("Location: ../index.php");
+        exit;
+    } else {
+        $error = "Échec de connexion !";
+        echo " $error";
         
-        
-        else{
-            echo "no user!!!!!";
-            if (!$resultat) {
-                die("Invalid query: " . $conn->error);
-                 }
-        }
+    }
+
+    $stmt->close();
+}
+
 $conn->close();
 ?>

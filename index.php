@@ -1,14 +1,16 @@
-<?php 
-  session_start();
+<?php
+session_start();
 
-  if(isset($_SESSION['user_name'])){
-    $user_name = $_SESSION['name'];
-    echo"bienvenue";
-  }
-  else {
-    echo"Pas de sesion connecté ";
+// Vérifier si l'utilisateur est connecté
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
+    $user_id = $_SESSION['user_id'];
+    $user_name = $_SESSION['user_name'];
+    
+} else {
+    // Rediriger l'utilisateur vers la page de connexion
     header("Location: ./adminLogin/index.php");
-  }
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -377,7 +379,7 @@
                     </div>
                     <div class="profile">
                         <div class="info">
-                            <p>Hey, <b><?php// echo"$user_name"; ?></b></p>
+                            <p>Hey, <b><?php echo"$user_name"; ?></b></p>
                             <small class="text-muted">Admin</small>
                         </div>
                         <div class="profile-photo">
