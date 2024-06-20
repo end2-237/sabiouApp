@@ -273,8 +273,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                                    <td class=''>" . $row["montant_total"] . "FCFA</td>
                                    <td class=''>" . $row["quantite"] . "</td>
                                    <td class='primary' data-open-modal><span class='material-icons-sharp'>app_registration</span></td>
-                                   <td><a href='./index.php?id=".$row['id']."' class='btn'>supprimer</a></td>
-                                   </tr>
+                                   
+                                   
+
+                                   <td><a href='#' onclick='return confirmDelete(\"./index.php?id=" . $row['id'] . "\")' class='btn'>supprimer</a></td>
+
+                                   
                                    <dialog data-modal class='modal'>
                                    <div class='title primary'><big>Modifiez les informations de " . $row["nom_client"] . "</big></div>
                                    <div class='input-field'>
@@ -303,6 +307,17 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                 
                                    }
                                ?>
+
+<script>
+function confirmDelete(url) {
+    if (confirm("Voulez-vous vraiment supprimer cet élément ?")) {
+        window.location.href = url;
+        return true;
+    } else {
+        return false;
+    }
+}
+</script>
                                <script>
                                    const openBtn = document.querySelector('[data-open-modal]')
                                    const closeBtn = document.querySelector('[data-close-modal]')
