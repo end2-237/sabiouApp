@@ -1,0 +1,76 @@
+*{
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+    background: #396dce;
+}
+.container{
+    padding: 30px 25px;
+    background: #fff;
+    box-shadow: 1px 1px 0px 0px #c2c2c2;
+    border-radius: 5px;
+    min-height: 200px;
+    
+}
+.container header,
+.container form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container .space{
+    background: #c2c2c2;
+    height: 1px;
+    width: 100%;
+    margin-top: 15px;
+}
+.container h1{
+    text-transform: capitalize;
+    color: #333131;
+}
+.container .field{
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    gap: 10px;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.container .field .input-field input{
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 210px;
+    border: 1px solid #c2c2c2;
+    font-size: 16px;
+    outline-color:#396dce;
+}
+.container .submit{
+    margin-top: 30px;
+    width: auto;
+}
+.container .submit input{
+    width: 100%;
+    background: #396dce;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 600;
+}
+.container .submit input:hover{
+    opacity: 0.6;
+}
+.container .link{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
