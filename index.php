@@ -18,7 +18,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Comptabile" content="IE-edge">
-        <meta name="viewport" content="width=device-wdth" initial-scale="1.0">
         <title>TB | Gestion des Inscritions</title>
         <!--MATERIAL ICONS-->
         <link href="./font.css" rel="stylesheet">
@@ -172,9 +171,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                                 </div>
 
                                 <script>
-                                  const ctx = document.getElementById('myChart2');
+                                  const ct = document.getElementById('myChart2');
 
-                                  new Chart(ctx, {
+                                  new Chart(ct, {
                                     type: 'pie',
                                     data: {
                                       labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -239,6 +238,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                                 <th>Date de livraison</th>
                                 <th>Montant Total</th>
                                 <th>Nombre carton</th>
+                                <th>Transport</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -268,12 +268,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                                    echo "<tr>
                                    <td>" . $row["telephone"] . "</td>
                                    <td>" . $row["nom_client"] . "</td>
-                                   <td>" . $row["PV"] . "</td>
-                                   <td>" . $row["RAP"] . "</td>
+                                   <td class='warning'>" . $row["PV"] . "</td>
+                                   <td class='warning'>" . $row["RAP"] . "</td>
                                    <td class='warning'>" . $row["date_de_commande"] . "</td>
                                    <td class='warning'>" . $row["date_de_livraison"] . "</td>
-                                   <td class=''>" . $row["montant_total"] . "FCFA</td>
-                                   <td class=''>" . $row["quantite"] . "</td>
+                                   <td class='warning'>" . $row["montant_total"] . "FCFA</td>
+                                   <td class='warning'>" . $row["quantite"] . "</td>
+                                   <td class='warning'>" . $row["ct"] . "</td>
                                    <td class='primary' data-open-modal><span class='material-icons-sharp'>app_registration</span></td>
                                    
                                    
@@ -445,7 +446,7 @@ function confirmDelete(url, code_com) {
                 </div>
                 <!------------------------END OF RECENT UPDATES----------------->
                 <div class="sales-analytics">
-                    <h2>Derniers élèves inscrits</h2>
+                    <h2>Dernières commandes</h2>
                             <?php
                             include_once 'conn.php';                                
                                    // read all row from database table

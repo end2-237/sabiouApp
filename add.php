@@ -121,15 +121,36 @@
                             <label for="">Lieu de livraison</label>
                             <input type="text" class="input" name="lieu_de_livraison" placeholder="Douala, Ndokoti">
                         </div>
-                        <div class="input_field">
-                            <label for="">Taille</label>
-                            <input type="number" class="input" name="taille" placeholder="Taille du produit">
+
+                        <!--<div class="input_field">
+                            <label for="">Grammage</label>
+                            <input type="number" class="input" name="taille" placeholder="Taille du produit ( en gramme)">
+                            </div>
+                        -->
+
+
+                        <div class="input_field"> 
+                            <div class="custom_select">
+                                <label for="taille">Grammage</label> 
+                            <select name="taille" class="input"> 
+                                <option value="150">150 g</option> 
+                                <option value="180">180 g</option>  
+                                <option value="350">350 g</option>  
+                                <option value="400">400 g</option> 
+                            </select> </div>
                         </div>
+
+
                         <!--
                         <div class="input_field">
                             <label for="">Téléversser une image</label>
                             <input type="file" name="fichier" class>
                         </div>-->
+                        <div class="input_field">
+                            <label for="">Cout de transport:</label>
+                            <input type="number" class="input" name="ct" placeholder="Prix du transport (FCFA)">
+                        </div>
+                        
                         <div class="input_field">
                             <label for="">Quantité (en carton):</label>
                             <input type="number" class="input" name="quantite" placeholder="100">
