@@ -1,3 +1,4 @@
+<?php include_once 'verif.php';?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -107,7 +108,7 @@
                         <thead>
                             <tr>
                                 <th>Nom du client</th>
-                                <th>#ID</th>
+                                <th>Nb prod</th>
                                 <th>Prix unitaire</th>
                                 <th>Date de commande</th>
                                 <th>Date de livraison</th>
@@ -133,7 +134,7 @@
                                   while ($row = $result->fetch_assoc()) {
                                    echo "<tr>
                                    <td>" . $row["nom_client"] . "</td>
-                                   <td>" . $row["id"] . "</td>
+                                   <td>" . $row["quantite"] . "</td>
                                    <td>" . $row["prix_unitaire"] . "</td>
                                    <td>" . $row["date_de_commande"] . "</td>
                                    <td>" . $row["date_de_livraison"] . "</td>
@@ -141,7 +142,7 @@
                                    <td class='warning'>" . $row["montant_total"] . "</td>
                                    <td>" . $row["num_ref"] . "</td>
                                    <td class='primary' data-open-modal><span class='material-icons-sharp'>app_registration</span></td>
-                                   <td><a href='./index.php?id=".$row['id']."' class='btn'>supprimer</a></td>
+                                    <td><a href=\"#\" onclick=\"return confirmDelete('./index.php?id=" . $row['id'] . "&code_com=" . $row['code_com'] . "', '" . $row['code_com'] . "')\"   class='btn'>supprimer</a></td>
                                    </tr>
                                    <dialog data-modal class='modal'>
                                    <div class='title primary'><big>Modifiez les informations de " . $row["nom_client"] . "</big></div>
@@ -171,6 +172,22 @@
                 
                                    }
                                ?>
+                               <script>
+                            function confirmDelete(url, code_com) {
+                                if (confirm("Voulez-vous vraiment supprimer cet élément ?")) {
+                                    var enteredCode = prompt("Entrez le code de la commande ");
+                                    if (enteredCode == code_com) {
+                                        window.location.href = url;
+                                        return true;
+                                    } else {
+                                        alert("Le code saisi ne correspond pas. Opération annulée.");
+                                        return false;
+                                    }
+                                } else {
+                                    return false;
+                                }
+                            }
+                        </script>
                                <script>
                                    const openBtn = document.querySelector('[data-open-modal]')
                                    const closeBtn = document.querySelector('[data-close-modal]')

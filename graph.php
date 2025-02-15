@@ -1,3 +1,4 @@
+<?php include_once 'verif.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,100 +1,88 @@
-<?php
-session_start();
-
-// Vérifier si l'utilisateur est connecté
-if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
-    $user_id = $_SESSION['user_id'];
-    $user_name = $_SESSION['user_name'];
-    
-} else {
-    // Rediriger l'utilisateur vers la page de connexion
-    header("Location: ./adminLogin/index.php");
-    exit;
-}
-?>
+<?php include_once 'verif.php';?>
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Comptabile" content="IE-edge">
-        <title>TB | Gestion des Inscritions</title>
-        <!--MATERIAL ICONS-->
-        <link href="./font.css" rel="stylesheet">
-        <!--STYLESHEET-->
-        <link rel="stylesheet" href="./style.css">
-    </head>
-    <body>
-        <div class="container">
-            <aside>
-                <div class="top">
-                      <div class="logo">
-                         <img src="./images/logo.png">
-                         <h2>Ges <span class="danger">|  Ins</span></h2>
-                      </div>
-                      <div class="close" id="close-btn">
-                         <span class="material-icons-sharp">close</span>
-                      </div>
-                </div>      
-                <div class="sidebar">
-                    <a href="#" class="active">
-                        <span class="material-icons-sharp">grid_view</span>
-                        <h3>Tableau De Bord</h3>
-                    </a>
-                    <a href="http://localhost/project_continouis/admin_index.php">
-                        <span class="material-icons-sharp">person_outline</span>
-                        <h3>Administrateur</h3>
-                    </a>
-                    <a href="#">
-                        <span class="material-icons-sharp">receipt_long</span>
-                        <h3>Plannings</h3>
-                    </a>
-                    <a href="./stats.php">
-                        <span class="material-icons-sharp">insights</span>
-                        <h3>Statistiques</h3>
-                    </a>
-                    <a href="messages.php">
-                        <span class="material-icons-sharp">mail_outline</span>
-                        <h3>Messages</h3>
-                        <span class="message-count">26</span>
-                    </a>
-                    <a href="./eleve.php">
-                        <span class="material-icons-sharp">inventory</span>
-                        <h3>Liste Des Commandes</h3>
-                    </a>
-                    <a href="#">
-                        <span class="material-icons-sharp">report_gmailerrorred</span>
-                        <h3>Rapports</h3>
-                    </a>
-                    <a href="#">
-                        <span class="material-icons-sharp">settings</span>
-                        <h3>Paramètres</h3>
-                    </a>
-                    <a href="./add.php">
-                        <span class="material-icons-sharp">add</span>
-                        <h3>Ajouter commande</h3>
-                    </a>
-                    <a href="deco.php">
-                        <span class="material-icons-sharp">logout</span>
-                        <h3>Déconnexion</h3>
-                    </a>
-                </div>
-            </aside>
-            <!--END OF ASIDE-->
-            <main>
-                <h1>Gestion de commandes</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Comptabile" content="IE-edge">
+    <title>TB | Gestion des Inscritions</title>
+    <!--MATERIAL ICONS-->
+    <link href="./font.css" rel="stylesheet">
+    <!--STYLESHEET-->
+    <link rel="stylesheet" href="./style.css">
+</head>
 
-                <div class="date">
-                    <?php echo date("d-m-Y");?>
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="./images/logo.png">
+                    <h2>Ges <span class="danger">| Ins</span></h2>
                 </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="#" class="active">
+                    <span class="material-icons-sharp">grid_view</span>
+                    <h3>Tableau De Bord</h3>
+                </a>
+                <a href="./adminLogin/admin.php">
+                    <span class="material-icons-sharp">person_outline</span>
+                    <h3>Administrateur</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">receipt_long</span>
+                    <h3>Plannings</h3>
+                </a>
+                <a href="./stats.php">
+                    <span class="material-icons-sharp">insights</span>
+                    <h3>Statistiques</h3>
+                </a>
+                <a href="messages.php">
+                    <span class="material-icons-sharp">mail_outline</span>
+                    <h3>Messages</h3>
+                    <span class="message-count">26</span>
+                </a>
+                <a href="./eleve.php">
+                    <span class="material-icons-sharp">inventory</span>
+                    <h3>Liste Des Commandes</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">report_gmailerrorred</span>
+                    <h3>Rapports</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">settings</span>
+                    <h3>Paramètres</h3>
+                </a>
+                <a href="./add.php">
+                    <span class="material-icons-sharp">add</span>
+                    <h3>Ajouter commande</h3>
+                </a>
+                <a href="deco.php">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Déconnexion</h3>
+                </a>
+            </div>
+        </aside>
+        <!--END OF ASIDE-->
+        <main>
+            <h1>Gestion de commandes</h1>
 
-                <div class="insights">
-                    <div class="sales">
-                        <span class="material-icons-sharp">analytics</span>
-                        <div class="middle">
-                            <div class="left">
-                                <h3>Total des commandes</h3>
-                                <?php
+            <div class="date">
+                <?php echo date("d-m-Y");?>
+            </div>
+
+            <div class="insights">
+                <div class="sales">
+                    <span class="material-icons-sharp">analytics</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total des commandes</h3>
+                            <?php
                                    include_once 'conn.php';
                                    $nb_ele = "0";
                                          # code...
@@ -109,48 +97,49 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                                          echo "</h1>";
                                      
                                 ?>
-                                
-                            </div>
-                            <div class="progress"><div>
-                               <canvas id="myChart1"></canvas>
-                               </div>
 
-                               <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                               <script>
-                                 const ctx = document.getElementById('myChart1');
-
-                                 new Chart(ctx, {
-                                   type: 'pie',
-                                   data: {
-                                     labels: ['PointM', 'Commandes'],
-                                     datasets: [{
-                                       label: '# of Votes',
-                                       data: [1000, <?php echo "$nb_ele";?>],
-                                       borderWidth: 1
-                                     }]
-                                   },
-                                   options: {
-                                     scales: {
-                                       y: {
-                                         beginAtZero: true
-                                       }
-                                     }
-                                   }
-                                 });
-                               </script>
-                            </div>
                         </div>
-                        <small class="text-muted">Dernière 24 Heures</small>
+                        <div class="progress">
+                            <div>
+                                <canvas id="myChart1"></canvas>
+                            </div>
+
+                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                            <script>
+                                const ctx = document.getElementById('myChart1');
+
+                                new Chart(ctx, {
+                                    type: 'pie',
+                                    data: {
+                                        labels: ['PointM', 'Commandes'],
+                                        datasets: [{
+                                            label: '# of Votes',
+                                            data: [1000, <? php echo "$nb_ele";?>],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                    options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+                                 });
+                            </script>
+                        </div>
                     </div>
-                    <!--END OF SALES-->
-                    
-                    <div class="icome">
-                        <span class="material-icons-sharp">bar_chart</span>
-                        <div class="middle">
-                            <div class="left">
-                                <h3>Ventes Total</h3>
-                                <?php
+                    <small class="text-muted">Dernière 24 Heures</small>
+                </div>
+                <!--END OF SALES-->
+
+                <div class="icome">
+                    <span class="material-icons-sharp">bar_chart</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Ventes Total</h3>
+                            <?php
                                    $nb_vente = "0";
                                          # code...
                                          $requete = "SELECT montant_total FROM commande";
@@ -164,46 +153,46 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                                          echo "</h1>";
                                      
                                 ?>
+                        </div>
+                        <div class="progress">
+                            <div>
+                                <canvas id="myChart2"></canvas>
                             </div>
-                            <div class="progress">
-                                <div>
-                                 <canvas id="myChart2"></canvas>
-                                </div>
 
-                                <script>
-                                  const ct = document.getElementById('myChart2');
+                            <script>
+                                const ct = document.getElementById('myChart2');
 
-                                  new Chart(ct, {
+                                new Chart(ct, {
                                     type: 'pie',
                                     data: {
-                                      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                                      datasets: [{
-                                        label: '# of Votes',
-                                        data: [12, 19, 3, 5, 2, 3],
-                                        borderWidth: 1
-                                      }]
+                                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                        datasets: [{
+                                            label: '# of Votes',
+                                            data: [12, 19, 3, 5, 2, 3],
+                                            borderWidth: 1
+                                        }]
                                     },
                                     options: {
-                                      scales: {
-                                        y: {
-                                          beginAtZero: true
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
                                         }
-                                      }
                                     }
-                                  });
-                                </script>
-                            </div>
+                                });
+                            </script>
                         </div>
-                        <small class="text-muted">Dernière 24 Heures</small>
                     </div>
-                    <!--END OF EXPENSES-->
-                    
-                    <div class="expenses">
-                        <span class="material-icons-sharp">stacked_line_chart</span>
-                        <div class="middle">
-                            <div class="left">
-                                <h3>Total de carton</h3>
-                                <?php
+                    <small class="text-muted">Dernière 24 Heures</small>
+                </div>
+                <!--END OF EXPENSES-->
+
+                <div class="expenses">
+                    <span class="material-icons-sharp">stacked_line_chart</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Quantite Total de Produit</h3>
+                            <?php
                                    $nb_carton = "0";
                                          # code...
                                          $requete = "SELECT quantite FROM commande";
@@ -217,34 +206,34 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                                          echo "</h1>";
                                      
                                 ?>
-                            </div>
                         </div>
-                        <small class="text-muted">Dernière 24 Heures</small>
                     </div>
-                    <!--END OF INCOMES-->
+                    <small class="text-muted">Dernière 24 Heures</small>
                 </div>
-                <!--END OF INSIGHTS-->
-                <div class="recent-orders">
-                    <h2>Récement</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Téléphone client</th>
-                                <th>Nom client</th>
-                                
-                                <th>Premier versement</th>
-                                <th>Reste à payer</th>
-                                <th>Date de commande</th>
-                                <th>Date de livraison</th>
-                                <th>Montant Total</th>
-                                <th>Nombre carton</th>
-                                <th>Transport</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                                <?php
+                <!--END OF INCOMES-->
+            </div>
+            <!--END OF INSIGHTS-->
+            <div class="recent-orders">
+                <h2>Récement</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Téléphone client</th>
+                            <th>Nom client</th>
+
+                            <th>Premier versement</th>
+                            <th>Reste à payer</th>
+                            <th>Date de commande</th>
+                            <th>Date de livraison</th>
+                            <th>Montant Total</th>
+                            <th>Type/Quantite de produit</th>
+                            <th>Transport</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php
                                 include_once 'conn.php';
 
                                    if (isset($_GET['id'])) {
@@ -273,7 +262,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                                    <td class='warning'>" . $row["date_de_commande"] . "</td>
                                    <td class='warning'>" . $row["date_de_livraison"] . "</td>
                                    <td class='warning'>" . $row["montant_total"] . "FCFA</td>
-                                   <td class='warning'>" . $row["quantite"] . "</td>
+                                   <td class='warning'>" . $row["Mp"] . "/" . $row["quantite"] ."</td>
                                    <td class='warning'>" . $row["ct"] . "</td>
                                    <td class='primary' data-open-modal><span class='material-icons-sharp'>app_registration</span></td>
                                    
@@ -311,143 +300,151 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])) {
                                    }
                                ?>
 
-<script>
-function confirmDelete(url, code_com) {
-    if (confirm("Voulez-vous vraiment supprimer cet élément ?")) {
-        var enteredCode = prompt("Entrez le code de la commande ");
-        if (enteredCode == code_com) {
-            window.location.href = url;
-            return true;
-        } else {
-            alert("Le code saisi ne correspond pas. Opération annulée.");
-            return false;
-        }
-    } else {
-        return false;
-    }
-}
-</script>
-                               <script>
-                                   const openBtn = document.querySelector('[data-open-modal]')
-                                   const closeBtn = document.querySelector('[data-close-modal]')
-                                   const modal = document.querySelector('[data-modal]')
-                           
-                                   openBtn.addEventListener('click', () => {
-                                       modal.showModal()
-                                   })
-                           
-                                   closeBtn.addEventListener('click', () => {
-                                       modal.close()
-                                   })
-                                </script>
-                                <style>
-                                dialog::backdrop{
-                                    backdrop-filter: blur(2px);
+                        <script>
+                            function confirmDelete(url, code_com) {
+                                if (confirm("Voulez-vous vraiment supprimer cet élément ?")) {
+                                    var enteredCode = prompt("Entrez le code de la commande ");
+                                    if (enteredCode == code_com) {
+                                        window.location.href = url;
+                                        return true;
+                                    } else {
+                                        alert("Le code saisi ne correspond pas. Opération annulée.");
+                                        return false;
+                                    }
+                                } else {
+                                    return false;
                                 }
-                                .modal{
-                                    position: relative;
-                                    padding: 15px 30px;
-                                    border: none;
-                                    background: #f2f2f2;
-                                    margin-top: 350px;
-                                    margin-left: 650px;
-                                    box-shadow: 10px 15px 15px 5px rgba(0, 0, 0, 0.2);
-                        
-                                }
-                                .closeBtn{
-                                    background: #111;
-                                    border: none;
-                                    padding: 15px 18px;
-                                    color: #fff;
-                                    position: relative;
-                                    margin-top: 20px;
-                                    margin-left: 10%;
-                                    border-radius: 3px;
-                                }
-                                .title{
-                                    position: relative;
-                                    margin-top: 10px;
-                                    display: flex;
-                                }
-                                .input-field{
-                                    position: relative;
-                                    display: flex;
-                                    margin-top: 30px;
-                                }
-                                .input-field input{
-                                    padding: 10px 15px;
-                                    width: 100px;
-                                    margin: 15px;
-                                    border-radius: 10px;
-                                    border:1px solid #222;
-                                }
-                                .endbtn{
-                                    display:flex;
-                                }
-                            </style>
-                        </tbody>
-                    </table>
-                    <a href="#">Voir Tout</a>
+                            }
+                        </script>
+                        <script>
+                            const openBtn = document.querySelector('[data-open-modal]')
+                            const closeBtn = document.querySelector('[data-close-modal]')
+                            const modal = document.querySelector('[data-modal]')
+
+                            openBtn.addEventListener('click', () => {
+                                modal.showModal()
+                            })
+
+                            closeBtn.addEventListener('click', () => {
+                                modal.close()
+                            })
+                        </script>
+                        <style>
+                            dialog::backdrop {
+                                backdrop-filter: blur(2px);
+                            }
+
+                            .modal {
+                                position: relative;
+                                padding: 15px 30px;
+                                border: none;
+                                background: #f2f2f2;
+                                margin-top: 350px;
+                                margin-left: 650px;
+                                box-shadow: 10px 15px 15px 5px rgba(0, 0, 0, 0.2);
+
+                            }
+
+                            .closeBtn {
+                                background: #111;
+                                border: none;
+                                padding: 15px 18px;
+                                color: #fff;
+                                position: relative;
+                                margin-top: 20px;
+                                margin-left: 10%;
+                                border-radius: 3px;
+                            }
+
+                            .title {
+                                position: relative;
+                                margin-top: 10px;
+                                display: flex;
+                            }
+
+                            .input-field {
+                                position: relative;
+                                display: flex;
+                                margin-top: 30px;
+                            }
+
+                            .input-field input {
+                                padding: 10px 15px;
+                                width: 100px;
+                                margin: 15px;
+                                border-radius: 10px;
+                                border: 1px solid #222;
+                            }
+
+                            .endbtn {
+                                display: flex;
+                            }
+                        </style>
+                    </tbody>
+                </table>
+                <a href="#">Voir Tout</a>
+            </div>
+        </main>
+        <!------------------------END MAIN----------------->
+        <div class="right">
+
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
                 </div>
-            </main>
-            <!------------------------END MAIN----------------->
-            <div class="right">
-            
-                <div class="top">
-                    <button id="menu-btn">
-                        <span class="material-icons-sharp">menu</span>
-                    </button>
-                    <div class="theme-toggler">
-                        <span class="material-icons-sharp active">light_mode</span>
-                        <span class="material-icons-sharp">dark_mode</span>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>
+                                <?php echo"$user_name"; ?>
+                            </b></p>
+                        <small class="text-muted">Admin</small>
                     </div>
-                    <div class="profile">
-                        <div class="info">
-                            <p>Hey, <b><?php echo"$user_name"; ?></b></p>
-                            <small class="text-muted">Admin</small>
-                        </div>
+                    <div class="profile-photo">
+                        <img src="adminLogin/<?php echo"$user_pp"; ?>">
+                    </div>
+                </div>
+            </div>
+            <!--END OF TOP-->
+            <div class="recent-updates">
+                <h2>Mise à Jour Récement</h2>
+                <div class="updates">
+                    <div class="update">
                         <div class="profile-photo">
-                            <img src="./images/profile-1.jpg">
+                            <img src="./images/profile-2.jpg">
+                        </div>
+                        <div class="message">
+                            <p><b>Mike Tyson</b> Petit text de test pour remplir</p>
+                            <small class="text-muted">Il y a 2 Minutes</small>
+                        </div>
+                    </div>
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="./images/profile-3.jpg">
+                        </div>
+                        <div class="message">
+                            <p><b>Mike Tyson</b> Petit text de test pour remplir</p>
+                            <small class="text-muted">Il y a 2 Minutes</small>
+                        </div>
+                    </div>
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="./images/profile-4.jpg">
+                        </div>
+                        <div class="message">
+                            <p><b>Mike Tyson</b> Petit text de test pour remplir</p>
+                            <small class="text-muted">Il y a 2 Minutes</small>
                         </div>
                     </div>
                 </div>
-                <!--END OF TOP-->
-                <div class="recent-updates">
-                    <h2>Mise à Jour Récement</h2>
-                    <div class="updates">
-                        <div class="update">
-                            <div class="profile-photo">
-                                <img src="./images/profile-2.jpg">
-                            </div>
-                            <div class="message">
-                                <p><b>Mike Tyson</b> Petit text de test pour remplir</p>
-                                <small class="text-muted">Il y a 2 Minutes</small>
-                            </div>
-                        </div>
-                        <div class="update">
-                            <div class="profile-photo">
-                                <img src="./images/profile-3.jpg">
-                            </div>
-                            <div class="message">
-                                <p><b>Mike Tyson</b> Petit text de test pour remplir</p>
-                                <small class="text-muted">Il y a 2 Minutes</small>
-                            </div>
-                        </div>
-                        <div class="update">
-                            <div class="profile-photo">
-                                <img src="./images/profile-4.jpg">
-                            </div>
-                            <div class="message">
-                                <p><b>Mike Tyson</b> Petit text de test pour remplir</p>
-                                <small class="text-muted">Il y a 2 Minutes</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!------------------------END OF RECENT UPDATES----------------->
-                <div class="sales-analytics">
-                    <h2>Dernières commandes</h2>
-                            <?php
+            </div>
+            <!------------------------END OF RECENT UPDATES----------------->
+            <div class="sales-analytics">
+                <h2>Dernières commandes</h2>
+                <?php
                             include_once 'conn.php';                                
                                    // read all row from database table
                                    $sql = "SELECT * FROM commande ORDER BY id DESC LIMIT 3 ";
@@ -477,16 +474,17 @@ function confirmDelete(url, code_com) {
                 
                                    }
                             ?>
-                    <div class="item add-product">
-                        <div class="">
-                            <span class="material-icons-sharp">add</span>
-                            <h3>Ajouter un client</h3>
-                        </div>
+                <div class="item add-product">
+                    <div class="">
+                        <span class="material-icons-sharp">add</span>
+                        <h3>Ajouter un client</h3>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script src="./index.js"></script>
-    </body>
+    <script src="./index.js"></script>
+</body>
+
 </html>

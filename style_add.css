@@ -71,9 +71,17 @@
     padding: 15px 20px;
     border-radius: 15px;
     transition: all 0.3s ease;
+    background: rgba(255, 130, 130, 0.603);
+    color: #000;
 }
 .wrapper .form .code input{
     width:150px;
+}
+.messages{
+    padding: 20px;
+    border: solid 1px #999;
+    background: #d5dbd9;
+    border-radius: 12px;
 }
 .wrapper .form .input_field .custom_select{
     position: relative;
@@ -172,4 +180,7 @@
 }
 .wrapper .form .input_field .btn :hover{
     background: var(--color-primary);
+}
+.off{
+    display: none;
 }
